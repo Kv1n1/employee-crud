@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Array Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h2>Array Data Viewer</h2>
+    <div id="arrayTable"></div>
+    <script>
+        // Example array data
+        const data = [
+            { id: 1, name: 'John Doe', city: 'New York' },
+            { id: 2, name: 'Jane Smith', city: 'Los Angeles' },
+            { id: 3, name: 'Mike Johnson', city: 'Chicago' }
+        ];
+        function renderTable(data) {
+            if (!data.length) return '';
+            let table = '<table><thead><tr>';
+            // Table headers
+            Object.keys(data[0]).forEach(key => {
+                table += `<th>${key}</th>`;
+            });
+            table += '</tr></thead><tbody>';
+            // Table rows
+            data.forEach(row => {
+                table += '<tr>';
+                Object.values(row).forEach(val => {
+                    table += `<td>${val}</td>`;
+                });
+                table += '</tr>';
+            });
+            table += '</tbody></table>';
+            return table;
+        }
+        document.getElementById('arrayTable').innerHTML = renderTable(data);
+    </script>
+</body>
+</html>

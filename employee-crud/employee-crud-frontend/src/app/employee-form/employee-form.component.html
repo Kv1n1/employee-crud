@@ -1,0 +1,20 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</div>
+  <div *ngIf="errorMsg" class="alert alert-danger">{{ errorMsg }}</div>
+  <div>
+    <label>Name</label>
+    <input type="text" formControlName="name" />
+  </div>
+  <div>
+    <label>Email-Id</label>
+    <input type="email" formControlName="email" />
+  </div>
+  <div>
+    <label>Contact No</label>
+    <input type="text" formControlName="contact_no" />
+  </div>
+  <button type="submit" [disabled]="employeeForm.invalid">
+    {{ employee && employee.id ? 'Update Employee' : 'Add Employee' }}
+  </button>
+</form>
+

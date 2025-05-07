@@ -1,0 +1,26 @@
+<div *ngIf="errorMsg" class="alert alert-danger">{{ errorMsg }}</div>
+
+<h2>Employee List</h2>
+<!-- Employee Form for Add/Edit -->
+<app-employee-form [employee]="selectedEmployee" (saved)="onEmployeeSaved()"></app-employee-form>
+
+<table border="1" style="width:100%;margin-top:10px">
+  <tr>
+    <th>Sr No</th>
+    <th>Name</th>
+    <th>Contact No</th>
+    <th>Email-Id</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let emp of employees; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td>{{ emp.name }}</td>
+    <td>{{ emp.contact_no }}</td>
+    <td>{{ emp.email }}</td>
+    <td>
+      <button (click)="editEmployee(emp)">Edit</button>
+      <button (click)="deleteEmployee(emp.id!)">Delete</button>
+    </td>
+  </tr>
+</table>
+
